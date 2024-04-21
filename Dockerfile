@@ -8,7 +8,8 @@ COPY . .
 
 RUN apk add --no-cache python3 py3-pip tini; \
     pip install --upgrade pip setuptools-scm; \
-    python3 setup.py install; \
+    python -m venv env; \
+    source env/bin/activate; \
     python manage.py makemigrations main_app;  \
     python manage.py migrate; \
     addgroup -g 1000 appuser; \
